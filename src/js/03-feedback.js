@@ -26,8 +26,8 @@ function savedMessage() {
     }
 }
 function onTextareaInput(evt) {
-  let fg = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  formData = { ...fg, [evt.target.name]: evt.target.value };
+  JSON.parse(localStorage.getItem(STORAGE_KEY));
+  formData[evt.target.name] = evt.target.value ;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
