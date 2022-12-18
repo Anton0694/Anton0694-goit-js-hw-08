@@ -16,7 +16,7 @@ function onFormSubmit(evt) {
     evt.preventDefault();
     console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
     evt.target.reset();
-    localStorage.removeItem(STORAGE_KEY);
+    /* localStorage.removeItem(STORAGE_KEY); */
 }
 function onSaveInputData(evt) {
 
