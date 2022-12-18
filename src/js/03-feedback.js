@@ -7,7 +7,7 @@ const refs = {
     inputEmail: document.querySelector('input[type="email"]'),
     inputMessage: document.querySelector('textarea[name="message"]'),
 };
-savedMessage();
+onSaveInputData();
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onTextareaInput, 500));
@@ -15,17 +15,18 @@ refs.form.addEventListener('input', throttle(onTextareaInput, 500));
 function onFormSubmit(evt) {
     evt.preventDefault();
     console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
-    evt.currenTarget.reset();
+    evt.target.reset();
     localStorage.removeItem(STORAGE_KEY);
 }
-function savedMessage() {
-    let saveMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (saveMessage) {
-        refs.inputMessage.value = saveMessage.formData.textContent;
-        refs.inputEmail.value = saveMessage.formData.email;
-        console.log(saveMessage.formData.textContent )
+function onSaveInputData(evt) {
+
+  const userMessage = refs.inputMessage.value;
+  const userEmail = refs.inputEmail.name;
+  formData[userEmail] = userMessage;
+   
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
     }
-}
+
 function onTextareaInput(evt) {
   JSON.parse(localStorage.getItem(STORAGE_KEY));
     formData[evt.target.name] = evt.target.value;
